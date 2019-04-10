@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.3.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd"  >
+
+    <!-- com.acme将会被扫描，它会寻找任何@Component注解的类，这些类将会在Spring的容器中被注册成为一个bean。-->
+    <context:component-scan base-package="com.ssm"/>
+    <mvc:annotation-driven/>
+    <!--启用spring的一些annotation -->
+    <context:annotation-config/>
+    <!-- 静态资源访问 -->
+    <!--如果webapp下你新建了文件夹，想访问里面的静态资源，那么就要在这配置一下-->
+    <mvc:resources location="/images/" mapping="/images/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/styles/" mapping="/styles/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+    </mvc:interceptors>
+
+    <!--<mvc:default-servlet-handler/>-->
+    <!--  自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器  -->
+    <context:component-scan base-package="com.ssm.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 配置视图解析器，把控制器的逻辑视频映射为真正的视图 -->
+    <!-- /WEB-INF/jsp/start.jsp -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+</beans>
