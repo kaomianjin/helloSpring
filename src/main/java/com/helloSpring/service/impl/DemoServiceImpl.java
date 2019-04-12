@@ -1,15 +1,15 @@
-package com.ssm.service.impl;
+package com.helloSpring.service.impl;
 
-import com.ssm.dao.DemoMapper;
-import com.ssm.entity.Demo;
-import com.ssm.service.UserService;
+import com.helloSpring.dao.DemoMapper;
+import com.helloSpring.entity.Demo;
+import com.helloSpring.service.DemoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class DemoServiceImpl implements DemoService {
 
     @Resource
     DemoMapper demoMapper;

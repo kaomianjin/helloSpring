@@ -1,4 +1,4 @@
-package com.ssm.entity;
+package com.helloSpring.entity;
 
 public class Demo {
 

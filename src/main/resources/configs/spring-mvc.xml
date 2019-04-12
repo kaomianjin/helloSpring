@@ -11,7 +11,8 @@
          http://www.springframework.org/schema/mvc/spring-mvc.xsd"  >
 
     <!-- com.acme将会被扫描，它会寻找任何@Component注解的类，这些类将会在Spring的容器中被注册成为一个bean。-->
-    <context:component-scan base-package="com.ssm"/>
+    <context:component-scan base-package="com.helloSpring"/>
+    <!--启用MVC配置-->
     <mvc:annotation-driven/>
     <!--启用spring的一些annotation -->
     <context:annotation-config/>
@@ -30,7 +31,7 @@
 
     <!--<mvc:default-servlet-handler/>-->
     <!--  自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器  -->
-    <context:component-scan base-package="com.ssm.controller">
+    <context:component-scan base-package="com.helloSpring.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

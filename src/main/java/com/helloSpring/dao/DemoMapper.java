@@ -1,7 +1,6 @@
-package com.ssm.dao;
+package com.helloSpring.dao;
 
-import com.ssm.entity.Demo;
-import org.apache.ibatis.annotations.Param;
+import com.helloSpring.entity.Demo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
